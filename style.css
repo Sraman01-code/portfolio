@@ -10,6 +10,21 @@
   display: block;
 }
 
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #6e8efb;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #4f76e8;
+}
+
 .card-container a.card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0,0,0,0.15);
