@@ -1,85 +1,57 @@
-/* In your style1.css or an additional stylesheet */
-#sbi-logo {
-  width: 100px;
-  margin: 30px auto 10px;
-  display: block;
-}
-
-.container, .dashboard-card {
-  max-width: 100%;
-  width: 90%;
-}
-
-
-body {
+/* General Reset */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+}
+
+body {
   background: linear-gradient(135deg, #e3f2fd, #bbdefb);
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  padding: 20px;
 }
 
-input, select, button {
-  max-width: 100%;
-  font-size: 16px; /* Prevents zoom-in bug on iOS when font-size is too small */
-  box-sizing: border-box;
+/* Logo */
+#sbi-logo {
+  width: 100px;
+  margin: 30px auto 20px;
+  display: block;
 }
 
-@media screen and (max-width: 480px) {
-  .dashboard-card {
-    padding: 20px;
-  }
-
-  .button-group {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .card-image-preview img {
-    max-width: 100%;
-  }
-}
-
-
+/* Dashboard */
 .dashboard {
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
 }
 
 .dashboard-card {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   border-radius: 20px;
-  padding: 30px 40px;
+  padding: 30px 25px;
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
   max-width: 400px;
-  width: 90%;
+  width: 100%;
   text-align: center;
   animation: slideUp 0.8s ease-out;
 }
 
+/* Text */
 h2 {
   color: #0033A0;
   font-weight: 600;
   margin-bottom: 10px;
+  font-size: 22px;
 }
 
-.card-info,
-.balance {
+.card-info {
   color: #333;
-  margin-bottom: 10px;
-}
-
-.card-image-preview img {
-  width: 100%;
-  max-width: 320px;
-  border-radius: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 
 .balance {
@@ -89,15 +61,24 @@ h2 {
   margin-bottom: 20px;
 }
 
-.input-group input {
-  padding: 12px;
+/* Card Image */
+.card-image-preview img {
   width: 100%;
+  max-width: 320px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* Input */
+.input-group input {
+  width: 100%;
+  padding: 12px;
   border-radius: 10px;
   border: 1px solid #ddd;
-  font-size: 1rem;
+  font-size: 16px;
   margin-bottom: 15px;
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-  transition: border 0.3s;
+  transition: border 0.3s ease;
 }
 
 .input-group input:focus {
@@ -105,33 +86,33 @@ h2 {
   outline: none;
 }
 
+/* Buttons */
 .button-group {
   display: flex;
   justify-content: space-between;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .button-group button {
-  flex: 1;
-  padding: 12px;
+  flex: 1 1 45%;
+  padding: 14px;
   border: none;
   border-radius: 10px;
-  font-size: 1rem;
-  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
   background: #0033A0;
   color: white;
-  font-weight: 500;
+  cursor: pointer;
   transition: background 0.3s, transform 0.2s;
 }
-
-
 
 .button-group button:hover {
   background: #0056d2;
   transform: scale(1.03);
 }
 
-
+/* Animation */
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -143,12 +124,35 @@ h2 {
   }
 }
 
+/* ✅ Responsive Fixes */
 @media screen and (max-width: 480px) {
+  h2 {
+    font-size: 18px;
+  }
+
   .dashboard-card {
-    padding: 20px;
+    padding: 25px 20px;
+    border-radius: 16px;
+  }
+
+  .card-image-preview img {
+    max-width: 100%;
+  }
+
+  .input-group input {
+    font-size: 15px;
   }
 
   .button-group {
     flex-direction: column;
+  }
+
+  .button-group button {
+    flex: 1 1 100%;
+    font-size: 15px;
+  }
+
+  #sbi-logo {
+    width: 80px;
   }
 }

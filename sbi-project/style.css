@@ -1,4 +1,4 @@
-/* Reset default margins/paddings */
+/* General Reset */
 * {
   margin: 0;
   padding: 0;
@@ -9,46 +9,22 @@
 body {
   background: linear-gradient(to right, #f5f7fa, #c3cfe2);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
   color: #2c3e50;
 }
 
-.container, .dashboard-card {
-  max-width: 100%;
-  width: 90%;
-}
-
-@media screen and (max-width: 480px) {
-  .container {
-    padding: 15px;
-    margin: 40px auto;
-  }
-
-  .tab-buttons button {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  #card-preview img {
-    width: 100%;
-  }
-
-  input, select, button {
-    font-size: 16px;
-  }
-}
-
-input, select, button {
-  max-width: 100%;
-  font-size: 16px; /* Prevents zoom-in bug on iOS when font-size is too small */
-  box-sizing: border-box;
+#sbi-logo {
+  width: 140px;
+  margin-bottom: 20px;
 }
 
 .container {
   background: white;
-  padding: 40px;
+  padding: 30px 20px;
   border-radius: 20px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   width: 100%;
@@ -69,26 +45,26 @@ input, select, button {
 }
 
 h1 {
+  font-size: 24px;
   margin-bottom: 20px;
-  color: #1e2a38;
-  font-size: 26px;
 }
 
 .tab-buttons {
   display: flex;
   justify-content: center;
-  margin-bottom: 25px;
   gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
 }
 
 .tab-buttons button {
-  padding: 10px 20px;
+  padding: 10px 16px;
   border: none;
-  background: #e0e0e0;
   border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  background: #e0e0e0;
   font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
 .tab-buttons button:hover,
@@ -115,21 +91,21 @@ h1 {
   margin: 10px 0 16px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  font-size: 15px;
+  font-size: 16px;
   background: #f9f9f9;
 }
 
 button {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   border: none;
   border-radius: 50px;
   background: #0070f3;
   color: white;
   font-size: 16px;
   font-weight: bold;
-  margin-top: 10px;
   transition: all 0.3s ease;
+  margin-top: 10px;
   cursor: pointer;
 }
 
@@ -164,17 +140,22 @@ button:hover {
   margin-bottom: 10px;
 }
 
+/* Responsive Typography & Layout */
 @media (max-width: 480px) {
-  .container {
-    padding: 25px;
-    border-radius: 15px;
-  }
-
   h1 {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   button {
+    font-size: 15px;
+  }
+
+  .tab-buttons button {
+    flex: 1 1 45%;
     font-size: 14px;
+  }
+
+  #sbi-logo {
+    width: 100px;
   }
 }
