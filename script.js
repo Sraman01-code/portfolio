@@ -43,7 +43,7 @@ document.querySelectorAll('a').forEach(link => {
   });
 });
 
-
+document.addEventListener("DOMContentLoaded", typeWriter);
 
 document.addEventListener("DOMContentLoaded", () => {
   // Add class 'loaded' to body after the page content is loaded
