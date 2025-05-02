@@ -15,6 +15,37 @@ body {
   color: #2c3e50;
 }
 
+.container, .dashboard-card {
+  max-width: 100%;
+  width: 90%;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 15px;
+    margin: 40px auto;
+  }
+
+  .tab-buttons button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #card-preview img {
+    width: 100%;
+  }
+
+  input, select, button {
+    font-size: 16px;
+  }
+}
+
+input, select, button {
+  max-width: 100%;
+  font-size: 16px; /* Prevents zoom-in bug on iOS when font-size is too small */
+  box-sizing: border-box;
+}
+
 .container {
   background: white;
   padding: 40px;
