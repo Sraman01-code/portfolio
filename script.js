@@ -28,27 +28,27 @@ function typeWriter() {
   setTimeout(typeWriter, speed);
 }
 
-document.querySelectorAll('a').forEach(link => {
+document.querySelectorAll('a[href^="./"], a[href^="index"], a[href^="/"]').forEach(link => {
   link.addEventListener('click', (e) => {
-    e.preventDefault();
-    const destination = e.target.getAttribute('href');
-    
-    // Trigger the fade-out effect
-    document.body.classList.add('fade-out');
-    
-    setTimeout(() => {
-      // Navigate to the target page after fade-out
-      window.location.href = destination;
-    }, 600); // Adjust timing to match the fade-out duration
+    // Only handle same-tab internal navigation
+    if (!link.hasAttribute("target")) {
+      e.preventDefault();
+      const destination = link.getAttribute('href');
+      document.body.classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = destination;
+      }, 600);
+    }
   });
 });
 
+
 document.addEventListener("DOMContentLoaded", typeWriter);
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Add class 'loaded' to body after the page content is loaded
+window.addEventListener("load", () => {
   document.body.classList.add("loaded");
 });
+
 
 // Add transition effect on page load
 window.addEventListener('beforeunload', () => {
