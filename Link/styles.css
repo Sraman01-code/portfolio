@@ -1,91 +1,140 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-.bar.active {
-    background-color: #e74c3c; /* Red color for active bars */
-}
-
 
 body {
-    font-family: 'Arial', sans-serif;
-    background: #2C3E50;
-    color: #ecf0f1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
+  font-family: 'Arial', sans-serif;
+  background: #2C3E50;
+  color: #ecf0f1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
 }
 
 .visualizer-container {
-    text-align: center;
-    width: 80%;
-    max-width: 900px;
+  text-align: center;
+  width: 100%;
+  max-width: 1000px;
+  padding: 20px;
 }
 
 .title {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    color: #e74c3c;
-    text-shadow: 2px 2px #34495e;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #e74c3c;
+  text-shadow: 2px 2px #34495e;
 }
 
 .controls {
-    margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.btn,
+.dropdown {
+  padding: 10px 18px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  color: white;
 }
 
 .btn {
-    padding: 10px 20px;
-    margin: 0 10px;
-    background: #1abc9c;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background 0.3s ease;
+  background: #1abc9c;
 }
 
 .btn:hover {
-    background: #16a085;
+  background: #16a085;
 }
 
 .dropdown {
-    padding: 10px;
-    font-size: 16px;
-    background: #34495e;
-    border-radius: 5px;
-    color: #fff;
-    margin-left: 10px;
+  background: #34495e;
 }
 
 .array-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    margin-top: 30px;
-    height: 400px;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+  padding: 0 10px;
 }
 
 .bar {
-    width: 20px;
-    margin: 0 2px;
-    background: #3498db;
-    border-radius: 5px;
-    transition: height 0.2s ease;
+  width: 16px;
+  margin: 0 1px;
+  background: #3498db;
+  border-radius: 4px;
+  transition: height 0.2s ease;
 }
 
-@media (max-width: 600px) {
-  .card-container {
+.bar.active {
+  background-color: #e74c3c;
+}
+
+/* Medium Devices (Tablets) */
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .bar {
+    width: 10px;
+    margin: 0 1px;
+  }
+
+  .btn,
+  .dropdown {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+
+  .controls {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .array-container {
+    height: 320px;
+  }
+}
+
+/* Small Devices (Phones) */
+@media screen and (max-width: 480px) {
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .bar {
+    width: 6px;
+    margin: 0 1px;
+  }
+
+  .btn,
+  .dropdown {
+    font-size: 13px;
+    padding: 8px 10px;
+    width: 100%;
+  }
+
+  .controls {
     flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
 
-  .card {
-    flex: 1 1 100%;
+  .array-container {
+    height: 260px;
+    padding: 0 5px;
   }
 }
-
