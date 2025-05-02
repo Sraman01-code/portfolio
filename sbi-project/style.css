@@ -1,0 +1,149 @@
+/* Reset default margins/paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #2c3e50;
+}
+
+.container {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #1e2a38;
+  font-size: 26px;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+  gap: 10px;
+}
+
+.tab-buttons button {
+  padding: 10px 20px;
+  border: none;
+  background: #e0e0e0;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.tab-buttons button:hover,
+.tab-buttons button:focus {
+  background: #0070f3;
+  color: white;
+  transform: scale(1.05);
+}
+
+.tab {
+  display: none;
+  text-align: left;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.tab.active {
+  display: block;
+}
+
+.tab input,
+.tab select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+  background: #f9f9f9;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 50px;
+  background: #0070f3;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #005ad3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 112, 243, 0.3);
+}
+
+#card-preview {
+  margin-top: 10px;
+  text-align: center;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 12px;
+}
+
+#card-image {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+#payment-animation,
+#payment-complete {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#payment-animation img,
+#payment-complete img {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 25px;
+    border-radius: 15px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+}

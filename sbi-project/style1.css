@@ -1,0 +1,130 @@
+/* In your style1.css or an additional stylesheet */
+#sbi-logo {
+  width: 100px;
+  margin: 30px auto 10px;
+  display: block;
+}
+
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+
+
+.dashboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.dashboard-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 30px 40px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  animation: slideUp 0.8s ease-out;
+}
+
+h2 {
+  color: #0033A0;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.card-info,
+.balance {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.card-image-preview img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.balance {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1C75BC;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  padding: 12px;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+  transition: border 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #1C75BC;
+  outline: none;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.button-group button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  background: #0033A0;
+  color: white;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.2s;
+}
+
+
+
+.button-group button:hover {
+  background: #0056d2;
+  transform: scale(1.03);
+}
+
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .dashboard-card {
+    padding: 20px;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+}

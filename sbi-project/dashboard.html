@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SBI Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+  <img src="assets/images/sbi-logo.png" alt="SBI Logo" id="sbi-logo" />
+  <div class="dashboard">
+    <div class="dashboard-card">
+      <h2>Welcome, <span id="username">Sraman Nandi</span></h2>
+      <p class="card-info">Card Type: <strong id="card-type">Diamond</strong></p>
+      <div class="card-image-preview">
+        <img id="sbi-card-image" src="assets/cards/diamond.png" alt="SBI Card">
+      </div>
+      <p class="balance">Balance: ₹<span id="balance">500</span></p>
+
+      <div class="input-group">
+        <input type="number" id="amount" placeholder="Enter amount">
+      </div>
+
+      <div class="button-group">
+        <button onclick="deposit()">💰 Deposit</button>
+        <button onclick="withdraw()">💸 Withdraw</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Move the script here, after all HTML is loaded -->
+  <script src="script1.js"></script>
+</body>
+
+</html>
