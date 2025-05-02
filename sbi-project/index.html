@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <img src="assets/images/sbi-logo.png" alt="SBI Logo" id="sbi-logo" />
+  <title>SBI Clone - Login/Register</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>SBI Online Banking</h1>
+    <div class="tab-buttons">
+      <button onclick="showTab('login')">Login</button>
+      <button onclick="showTab('register')">Register</button>
+    </div>
+
+    <div id="login" class="tab active">
+      <h2>Login</h2>
+      <input type="text" id="login-username" placeholder="Username" />
+      <input type="password" id="login-password" placeholder="Password" />
+      <button onclick="loginUser()">Login</button>
+    </div>
+
+    <div id="register" class="tab">
+      <h2>Register</h2>
+      <input type="text" id="reg-name" placeholder="Full Name" />
+      <input type="email" id="reg-email" placeholder="Email" />
+      <input type="password" id="reg-password" placeholder="Password" />
+      <select id="card-type" onchange="updateCardPreview()">
+        <option value="gold">Gold Card</option>
+        <option value="platinum">Platinum Card</option>
+        <option value="diamond">Diamond Card</option>
+      </select>
+      <div id="card-preview">
+        <img id="card-image" src="assets/cards/gold.png" alt="Card Preview" width="100%">
+      </div>
+      <button onclick="fakePayment()">Pay ₹500 for Registration</button>
+
+      <div id="payment-animation" style="display:none;">
+        <img src="assets/animation/payment.gif" alt="Processing..." />
+        <p>Processing Payment...</p>
+      </div>
+      
+      <div id="payment-complete" style="display:none;">
+        <img src="assets/animation/payment-complete.gif" alt="Payment Complete" />
+        <p>Payment Successful!</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
