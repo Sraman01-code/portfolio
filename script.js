@@ -1,4 +1,4 @@
-// Typewriter effect
+// Typewriter effect with smoother speed
 const typeTarget = document.querySelector('.typewriter');
 const roles = ["BTech CSE Student, KIIT", "Java Developer", "AI/ML Explorer", "Web Developer"];
 
@@ -8,48 +8,127 @@ let isDeleting = false;
 
 function typeWriter() {
   const currentRole = roles[roleIndex];
-  let displayedText;
-
-  if (isDeleting) {
-    displayedText = currentRole.substring(0, charIndex--);
-  } else {
-    displayedText = currentRole.substring(0, charIndex++);
-  }
+  const displayedText = isDeleting
+    ? currentRole.substring(0, charIndex--)
+    : currentRole.substring(0, charIndex++);
 
   typeTarget.textContent = displayedText;
 
-  let typingSpeed = isDeleting ? 50 : 100;
+  let speed = isDeleting ? 40 : 80;
 
   if (!isDeleting && charIndex === currentRole.length + 1) {
     isDeleting = true;
-    typingSpeed = 1000; // Pause after full word
+    speed = 1000;
   } else if (isDeleting && charIndex === 0) {
     isDeleting = false;
     roleIndex = (roleIndex + 1) % roles.length;
-    typingSpeed = 300;
+    speed = 300;
   }
 
-  setTimeout(typeWriter, typingSpeed);
+  setTimeout(typeWriter, speed);
 }
 
-typeWriter();
-
-
-// Dark Mode Toggle
-const toggleBtn = document.getElementById('theme-toggle');
-toggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+document.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const destination = e.target.getAttribute('href');
+    
+    // Trigger the fade-out effect
+    document.body.classList.add('fade-out');
+    
+    setTimeout(() => {
+      // Navigate to the target page after fade-out
+      window.location.href = destination;
+    }, 600); // Adjust timing to match the fade-out duration
+  });
 });
 
-// Auto Year in Footer
+
+document.addEventListener("DOMContentLoaded", typeWriter);
+document.addEventListener("DOMContentLoaded", () => {
+  // Add class 'loaded' to body after the page content is loaded
+  document.body.classList.add("loaded");
+});
+
+// Add transition effect on page load
+window.addEventListener('beforeunload', () => {
+  document.body.classList.add('fade-out');
+  const transitionOverlay = document.createElement('div');
+  transitionOverlay.classList.add('page-transition');
+  document.body.appendChild(transitionOverlay);
+
+  // Wait for fade-out to finish before navigating
+  setTimeout(() => {
+    transitionOverlay.style.opacity = 1;
+  }, 100);
+});
+
+// Add fade-in effect once page content has fully loaded
+window.addEventListener('load', () => {
+  document.body.classList.remove('fade-out');
+});
+
+
+
+// Dark Mode Toggle with animation
+// Get the theme toggle button
+const themeToggleButton = document.getElementById('theme-toggle');
+
+// Check the stored theme preference in localStorage
+if (localStorage.getItem('theme') === 'dark') {
+  document.body.classList.add('dark-mode'); // Apply dark mode if stored
+} else {
+  document.body.classList.remove('dark-mode'); // Remove dark mode if not stored
+}
+
+// Toggle theme on button click
+themeToggleButton.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode'); // Toggle dark mode class
+  if (document.body.classList.contains('dark-mode')) {
+    localStorage.setItem('theme', 'dark'); // Save dark mode preference
+  } else {
+    localStorage.setItem('theme', 'light'); // Save light mode preference
+  }
+});
+
+
+// Set footer year dynamically
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Scroll to top button
+
+
+// Intersection Observer for Fade-in Animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('fade-in');
+    } else {
+      entry.target.classList.remove('fade-in');
+    }
+  });
+}, { threshold: 0.5 });
+
+const sections = document.querySelectorAll('.fade-in');
+sections.forEach(section => observer.observe(section));
+
+
+// Scroll to Top Button with fade animation
 const scrollBtn = document.getElementById('scroll-top');
 window.addEventListener('scroll', () => {
   scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
 });
 scrollBtn.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+
+// Touch + Hover support on mobile buttons and cards
+const interactiveElements = document.querySelectorAll('.btn, .card');
+interactiveElements.forEach(elem => {
+  elem.addEventListener('touchstart', () => {
+    elem.classList.add('touched');
+  });
+  elem.addEventListener('touchend', () => {
+    elem.classList.remove('touched');
+  });
 });
