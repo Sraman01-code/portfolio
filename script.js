@@ -28,19 +28,19 @@ function typeWriter() {
   setTimeout(typeWriter, speed);
 }
 
-document.querySelectorAll('a[href^="./"], a[href^="index"], a[href^="/"]').forEach(link => {
+document.querySelectorAll('a[href]:not([target="_blank"])').forEach(link => {
   link.addEventListener('click', (e) => {
-    // Only handle same-tab internal navigation
-    if (!link.hasAttribute("target")) {
-      e.preventDefault();
-      const destination = link.getAttribute('href');
-      document.body.classList.add('fade-out');
-      setTimeout(() => {
-        window.location.href = destination;
-      }, 600);
-    }
+    e.preventDefault();
+    const destination = link.getAttribute('href');
+
+    // Fade out before navigating
+    document.body.classList.add('fade-out');
+    setTimeout(() => {
+      window.location.href = destination;
+    }, 400);
   });
 });
+
 
 
 document.addEventListener("DOMContentLoaded", typeWriter);
@@ -64,9 +64,15 @@ window.addEventListener('beforeunload', () => {
 });
 
 // Add fade-in effect once page content has fully loaded
-window.addEventListener('load', () => {
-  document.body.classList.remove('fade-out');
-});
+// Ensure the 'loaded' class is reapplied when user returns
+function handleVisibility() {
+  document.body.classList.remove("fade-out");
+  document.body.classList.add("loaded");
+}
+
+window.addEventListener("pageshow", handleVisibility); // Handles back navigation
+window.addEventListener("load", handleVisibility);      // Handles normal load
+
 
 
 
