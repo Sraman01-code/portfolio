@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SBI Clone - Login/Register</title>
+  <title>SECURE TRUST - Login/Register</title>
   <link rel="icon" type="image/png" href="assets/images/sbi-favicon.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <img src="assets/images/sbi-logo.png" alt="SBI Logo" id="sbi-logo" />
   <div class="container">
-    <h1>SBI Online Banking</h1>
+    <h1><span style="color: #D4AF37;">SECURE</span><span style="color: black;">TRUST Online Banking</span></h1>
     <div class="tab-buttons">
       <button onclick="showTab('login')">Login</button>
       <button onclick="showTab('register')">Register</button>
@@ -37,7 +37,7 @@
       <div id="card-preview">
         <img id="card-image" src="assets/cards/gold.png" alt="Card Preview" width="100%">
       </div>
-      <button onclick="fakePayment()">Pay ₹500 for Registration</button>
+      <button id="myBtn" onclick="fakePayment()">Pay ₹500 for Registration</button>
 
       <div id="payment-animation" style="display:none;">
         <img src="assets/animation/payment.gif" alt="Processing..." />

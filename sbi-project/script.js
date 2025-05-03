@@ -4,6 +4,12 @@ function showTab(tabName) {
 }
 
 function fakePayment() {
+  const btn = document.getElementById("myBtn");
+  btn.disabled = true;
+  btn.innerText = "Processing..."; // Optional: update button text
+  btn.style.opacity = "0.6";       // Optional: visual feedback
+  btn.style.cursor = "not-allowed";
+
   document.getElementById("payment-animation").style.display = "block"; // Show loading animation
 
   setTimeout(() => {
@@ -17,6 +23,7 @@ function fakePayment() {
     }, 2000); // Wait 2 seconds before redirecting
   }, 3000); // Simulate payment processing for 3 seconds
 }
+
 
 function updateCardPreview() {
   const selected = document.getElementById("card-type").value;

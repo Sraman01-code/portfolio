@@ -7,7 +7,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  background: linear-gradient(90deg,rgba(227, 201, 107, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(227, 200, 125, 1) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,8 +17,8 @@ body {
 
 /* Logo */
 #sbi-logo {
-  width: 100px;
-  margin: 30px auto 20px;
+  width:240px;
+  margin: 10px auto 10px;
   display: block;
 }
 

@@ -7,7 +7,7 @@
 }
 
 body {
-  background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+  background: linear-gradient(90deg,rgba(227, 201, 107, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(227, 200, 125, 1) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,8 +18,8 @@ body {
 }
 
 #sbi-logo {
-  width: 140px;
-  margin-bottom: 20px;
+  width: 240px;
+  margin-bottom: 10px;
 }
 
 .container {
@@ -69,7 +69,7 @@ h1 {
 
 .tab-buttons button:hover,
 .tab-buttons button:focus {
-  background: #0070f3;
+  background: #D4AF37;
   color: white;
   transform: scale(1.05);
 }
@@ -100,7 +100,7 @@ button {
   padding: 14px;
   border: none;
   border-radius: 50px;
-  background: #0070f3;
+  background: #a9a9a9;
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -110,7 +110,7 @@ button {
 }
 
 button:hover {
-  background: #005ad3;
+  background: #D4AF37;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 112, 243, 0.3);
 }
