@@ -1,30 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced DSA Visualizer</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
-    <script src="visualizer.js" defer></script> <!-- Link to JavaScript file -->
+  <meta charset="UTF-8">
+  <title>Advanced DSA Visualizer</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="visualizer-container">
-        <h1 class="title">Advanced DSA Visualizer</h1>
-        
-        <div class="controls">
-            <button class="btn" id="generate">Generate Array</button>
-            <button class="btn" id="shuffle">Shuffle Array</button>
-            <select id="algorithm" class="dropdown">
-                <option value="bubble">Bubble Sort</option>
-                <option value="merge">Merge Sort</option>
-                <option value="quick">Quick Sort</option>
-            </select>
-            <button class="btn" id="sort">Start Sorting</button>
-        </div>
-        
-        <div id="array-container" class="array-container">
-            <!-- Bars will be displayed here -->
-        </div>
+  <div class="visualizer-container">
+    <div class="title">Advanced DSA Visualizer</div>
+    <div class="controls">
+      <button class="btn" id="generate">Generate Array</button>
+      <button class="btn" id="shuffle">Shuffle Array</button>
+      <select class="dropdown" id="algorithm">
+        <option value="bubble">Bubble Sort</option>
+        <option value="merge">Merge Sort</option>
+        <option value="quick">Quick Sort</option>
+      </select>
+      <button class="btn" id="sort">Start Sorting</button>
     </div>
+    <div class="array-container" id="array-container"></div>
+  </div>
+  <script src="visualizer.js"></script>
 </body>
 </html>

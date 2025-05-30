@@ -68,14 +68,17 @@ body {
   width: 100%;
   overflow: hidden;
   padding: 0 10px;
+  background: none;
 }
 
 .bar {
-  width: 16px;
+  flex: 1 1 auto;
+  min-width: 2px;
   margin: 0 1px;
   background: #3498db;
   border-radius: 4px;
   transition: height 0.2s ease;
+  /* height is set dynamically in JS as percentage */
 }
 
 .bar.active {
@@ -87,25 +90,18 @@ body {
   .title {
     font-size: 2rem;
   }
-
-  .bar {
-    width: 10px;
-    margin: 0 1px;
-  }
-
   .btn,
   .dropdown {
     font-size: 14px;
     padding: 8px 14px;
   }
-
   .controls {
     gap: 10px;
     flex-wrap: wrap;
   }
-
   .array-container {
     height: 320px;
+    padding: 0 5px;
   }
 }
 
@@ -114,27 +110,19 @@ body {
   .title {
     font-size: 1.6rem;
   }
-
-  .bar {
-    width: 6px;
-    margin: 0 1px;
-  }
-
   .btn,
   .dropdown {
     font-size: 13px;
     padding: 8px 10px;
     width: 100%;
   }
-
   .controls {
     flex-direction: column;
     align-items: center;
     width: 100%;
   }
-
   .array-container {
-    height: 260px;
-    padding: 0 5px;
+    height: 200px;
+    padding: 0 2px;
   }
 }
