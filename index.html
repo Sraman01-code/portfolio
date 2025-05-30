@@ -1,95 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of Sraman Nandi">
-  <title>Sraman Nandi | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sraman | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=SF+Pro+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <nav class="navbar glass">
+    <div class="logo">Sraman</div>
+    <ul>
+      <li><a href="#about" class="about-btn">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li>
+        <button
+          id="theme-toggle"
+          aria-label="Switch to dark theme"
+          aria-live="polite"
+          title="Toggle light & dark mode"
+        >
+          <svg width="24" height="24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 2a10 10 0 0 0 0 20" stroke="currentColor" stroke-width="2"/></svg>
+        </button>
+      </li>
+    </ul>
+  </nav>
 
-  <button id="scroll-top">↑</button>
-
-  <header class="hero">
-  <img src="images/profile.jpg" alt="Sraman Nandi" class="profile-img">
-  <h1 class="fade-in">Sraman Nandi</h1>
-  <p><span class="typewriter">Java Developer | ML Enthusiast | Problem Solver</span></p>
-  <button id="theme-toggle" class="theme-toggle">🌙</button>
-</header>
+  <section class="hero fade-in">
+    <img src="images/profile.jpg" class="profile-img" alt="Profile photo" />
+    <h1>
+      Hi, I’m
+      <span class="gradient-text highlight-name">Sraman</span>
+      <span class="typewriter" aria-hidden="true"></span>
+    </h1>
+    <a href="#projects" class="btn fancy-btn hero-cta">View My Work</a>
+  </section>
 
   <main class="container">
-    <section>
+    <section id="about" class="fade-in">
       <h2>About Me</h2>
       <p>
-        Hi! I’m a CSE student from KIIT, driven to solve real-world problems using Java, AI/ML, and clean code. I love turning ideas into code and constantly push myself to learn and build.
+        Hi! I’m a CSE student from KIIT, driven to solve real-world problems using
+        <strong>Java</strong>, <strong>AI/ML</strong>, and clean code. I love turning ideas into code and constantly push myself to learn and build.
       </p>
     </section>
 
-    <section>
-  <h2>Skills</h2>
-  <div class="skills-container">
-    <div class="card">Java</div>
-    <div class="card">HTML</div>
-    <div class="card">Data Structures</div>
-    <div class="card">Ethical Hacking</div>
-    <div class="card">AI/ML (Learning)</div>
-  </div>
-</section>
+    <section id="skills" class="fade-in">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <button class="skill-box" data-skill="Java" aria-label="Search Java on Google">Java</button>
+        <button class="skill-box" data-skill="HTML" aria-label="Search HTML on Google">HTML</button>
+        <button class="skill-box" data-skill="Data Structures" aria-label="Search Data Structures on Google">Data Structures</button>
+        <button class="skill-box" data-skill="Ethical Hacking" aria-label="Search Ethical Hacking on Google">Ethical Hacking</button>
+        <button class="skill-box" data-skill="AI/ML" aria-label="Search AI/ML on Google">AI/ML (Learning)</button>
+      </div>
+      <p class="skills-tip">Tip: Tap/click a skill to Google it!</p>
+    </section>
 
-    <section>
+    <section id="projects" class="fade-in">
       <h2>Projects</h2>
       <div class="card-container">
-        <div class="card project-card">
+        <div class="card holo-card">
           <h3>DSA Visualizer</h3>
           <p>Java app that helps visualize sorting and tree traversal algorithms.</p>
-          <a href="Link/index.html" class="btn"  target="_blank">Visit DSA Visualizer</a>
+          <a class="btn fancy-btn" href="Link/index.html" target="_blank">Visit DSA Visualizer</a>
         </div>
-
-        <div class="card project-card">
+        <div class="card holo-card">
           <h3>Secure Password Manager</h3>
-          <p>Password manager using Java AES encryption and file storage.</p>
-		  <span class="btn" target="_blank">Coming Soon..</span>
+          <p>Password manager using Java AES encryption and file storage.<br><em>Coming Soon...</em></p>
         </div>
-
-        <div class="card project-card">
+        <div class="card holo-card">
           <h3>Music Visualizer</h3>
           <p>Interactive music visualization app.</p>
-          <a href="Link1/index.html" class="btn"  target="_blank">Visit Music Visualizer</a>
+          <a class="btn fancy-btn" href="Link1/index.html" target="_blank">Visit Music Visualizer</a>
         </div>
-
-        <div class="card project-card">
-          <h3><span style="color: #D4AF37;">SECURE</span>TRUST Online Banking (v1)</h3>
+        <div class="card holo-card">
+          <h3>SECURETRUST Online Banking (v1)</h3>
           <p>Frontend clone of my Custom Internet Banking with login/register UI and animated card preview.</p>
-          <a href="sbi-project/index.html" class="btn" target="_blank">Visit <span style="color: #D4AF37;">SECURE</span>TRUST</a>
+          <a class="btn fancy-btn" href="sbi-project/index.html" target="_blank">Visit SECURETRUST</a>
         </div>
-		
-		<div class="card project-card">
+        <div class="card holo-card">
           <h3>Space Shooter Pro (v1.0)</h3>
           <p>A Primitive Space Shooter Game Project Built Using Unity.</p>
-          <a href="Space_Shooter/index.html" class="btn"  target="_blank">Visit Space Shooter Pro</a>
+          <a class="btn fancy-btn" href="Space_Shooter/index.html" target="_blank">Visit Space Shooter Pro</a>
         </div>
       </div>
     </section>
 
-    <section>
+    <section id="contact" class="fade-in">
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:sraman342986@gmail.com">sraman342986@gmail.com</a></p>
-      <p>GitHub: <a href="https://github.com/Sraman01-code" target="_blank">github.com/Sraman01-code</a></p>
+      <div class="contact-info">
+        <a href="mailto:sraman342986@gmail.com" class="btn fancy-btn">Email Me</a>
+        <a href="https://github.com/Sraman01-code" class="btn fancy-btn" target="_blank">GitHub</a>
+      </div>
     </section>
   </main>
 
+  <button id="scroll-top" aria-label="Scroll to Top">&#8679;</button>
   <footer>
-    <p>&copy; <span id="year"></span> Sraman Nandi</p>
+    &copy; <span id="year"></span> Sraman. All rights reserved.
   </footer>
-
   <script src="script.js"></script>
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    document.body.classList.remove("fade-out");
-    document.body.classList.add("loaded");
-  });
-</script>
 </body>
 </html>

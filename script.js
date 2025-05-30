@@ -1,140 +1,119 @@
-// Typewriter effect with smoother speed
-const typeTarget = document.querySelector('.typewriter');
-const roles = ["BTech CSE Student, KIIT", "Java Developer", "AI/ML Explorer", "Web Developer"];
+document.addEventListener("DOMContentLoaded", () => {
+  // TYPEWRITER EFFECT
+  const typeTarget = document.querySelector('.typewriter');
+  const roles = [
+    "BTech CSE Student, KIIT",
+    "Java Developer",
+    "AI/ML Explorer",
+    "Web Developer"
+  ];
+  let roleIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
 
-let roleIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-
-function typeWriter() {
-  const currentRole = roles[roleIndex];
-  const displayedText = isDeleting
-    ? currentRole.substring(0, charIndex--)
-    : currentRole.substring(0, charIndex++);
-
-  typeTarget.textContent = displayedText;
-
-  let speed = isDeleting ? 40 : 80;
-
-  if (!isDeleting && charIndex === currentRole.length + 1) {
-    isDeleting = true;
-    speed = 1000;
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    roleIndex = (roleIndex + 1) % roles.length;
-    speed = 300;
-  }
-
-  setTimeout(typeWriter, speed);
-}
-
-document.querySelectorAll('a[href]:not([target="_blank"])').forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    const destination = link.getAttribute('href');
-
-    // Fade out before navigating
-    document.body.classList.add('fade-out');
-    setTimeout(() => {
-      window.location.href = destination;
-    }, 400);
-  });
-});
-
-
-
-document.addEventListener("DOMContentLoaded", typeWriter);
-
-window.addEventListener("load", () => {
-  document.body.classList.add("loaded");
-});
-
-
-// Add transition effect on page load
-window.addEventListener('beforeunload', () => {
-  document.body.classList.add('fade-out');
-  const transitionOverlay = document.createElement('div');
-  transitionOverlay.classList.add('page-transition');
-  document.body.appendChild(transitionOverlay);
-
-  // Wait for fade-out to finish before navigating
-  setTimeout(() => {
-    transitionOverlay.style.opacity = 1;
-  }, 100);
-});
-
-// Add fade-in effect once page content has fully loaded
-// Ensure the 'loaded' class is reapplied when user returns
-function handleVisibility() {
-  document.body.classList.remove("fade-out");
-  document.body.classList.add("loaded");
-}
-
-window.addEventListener("pageshow", handleVisibility); // Handles back navigation
-window.addEventListener("load", handleVisibility);      // Handles normal load
-
-
-
-
-// Dark Mode Toggle with animation
-// Get the theme toggle button
-const themeToggleButton = document.getElementById('theme-toggle');
-
-// Check the stored theme preference in localStorage
-if (localStorage.getItem('theme') === 'dark') {
-  document.body.classList.add('dark-mode'); // Apply dark mode if stored
-} else {
-  document.body.classList.remove('dark-mode'); // Remove dark mode if not stored
-}
-
-// Toggle theme on button click
-themeToggleButton.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode'); // Toggle dark mode class
-  if (document.body.classList.contains('dark-mode')) {
-    localStorage.setItem('theme', 'dark'); // Save dark mode preference
-  } else {
-    localStorage.setItem('theme', 'light'); // Save light mode preference
-  }
-});
-
-
-// Set footer year dynamically
-document.getElementById('year').textContent = new Date().getFullYear();
-
-
-
-// Intersection Observer for Fade-in Animation
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('fade-in');
+  function typeWriter() {
+    const currentRole = roles[roleIndex];
+    if (isDeleting) {
+      charIndex--;
+      typeTarget.textContent = currentRole.substring(0, charIndex);
     } else {
-      entry.target.classList.remove('fade-in');
+      charIndex++;
+      typeTarget.textContent = currentRole.substring(0, charIndex);
     }
+    let speed = isDeleting ? 40 : 80;
+    if (!isDeleting && charIndex === currentRole.length) {
+      speed = 1000;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+      speed = 350;
+    }
+    setTimeout(typeWriter, speed);
+  }
+  typeWriter();
+
+  // Smooth fade-in for sections
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.fade-in').forEach(section => observer.observe(section));
+
+  // THEME TOGGLE (modern, accessible, respects system preference)
+  const themeToggleButton = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+  function getPreferredTheme() {
+    const stored = localStorage.getItem('theme');
+    if (stored) return stored;
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
+    return 'light';
+  }
+  function setTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    themeToggleButton.setAttribute(
+      'aria-label',
+      theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'
+    );
+  }
+  setTheme(getPreferredTheme());
+  themeToggleButton.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    setTheme(next);
   });
-}, { threshold: 0.5 });
-
-const sections = document.querySelectorAll('.fade-in');
-sections.forEach(section => observer.observe(section));
-
-
-// Scroll to Top Button with fade animation
-const scrollBtn = document.getElementById('scroll-top');
-window.addEventListener('scroll', () => {
-  scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
-});
-scrollBtn.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-
-// Touch + Hover support on mobile buttons and cards
-const interactiveElements = document.querySelectorAll('.btn, .card');
-interactiveElements.forEach(elem => {
-  elem.addEventListener('touchstart', () => {
-    elem.classList.add('touched');
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    setTheme(e.matches ? 'dark' : 'light');
   });
-  elem.addEventListener('touchend', () => {
-    elem.classList.remove('touched');
+
+  // Set footer year dynamically
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Scroll to top button
+  const scrollBtn = document.getElementById('scroll-top');
+  window.addEventListener('scroll', () => {
+    scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+  });
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Touch + Hover support on mobile buttons and cards
+  document.querySelectorAll('.btn, .fancy-btn, .card .btn, .skill-box').forEach(elem => {
+    elem.addEventListener('touchstart', () => elem.classList.add('touched'));
+    elem.addEventListener('touchend', () => elem.classList.remove('touched'));
+  });
+
+  // Skill box click: Google search
+  document.querySelectorAll('.skill-box').forEach(box => {
+    box.addEventListener('click', () => {
+      const query = encodeURIComponent(box.dataset.skill);
+      window.open(`https://www.google.com/search?q=${query}`, '_blank');
+    });
+    // For accessibility: allow keyboard "Enter"
+    box.addEventListener('keydown', e => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        box.click();
+      }
+    });
+  });
+
+  // --- FOCUS FIX FOR BUTTONS AND LINKS ---
+  // Remove focus after mouse click (not for keyboard users)
+  document.querySelectorAll('.btn, .fancy-btn, .card .btn, .skill-box, a.btn').forEach(elem => {
+    elem.addEventListener('mousedown', function(e) {
+      this.blur();
+    });
+  });
+
+  // Page fade-in/out
+  document.body.classList.add("loaded");
+  window.addEventListener('beforeunload', () => {
+    document.body.classList.remove('loaded');
   });
 });
