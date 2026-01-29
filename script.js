@@ -5,7 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
     "BTech CSE Student, KIIT",
     "Java Developer",
     "AI/ML Explorer",
-    "Web Developer"
+    "Web Developer",
+    "Building real-world tools",
+    "Debugging systems",
+    "Learning by shipping"
   ];
   let roleIndex = 0;
   let charIndex = 0;
@@ -117,3 +120,4 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.remove('loaded');
   });
 });
+
