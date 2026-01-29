@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const typeTarget = document.querySelector('.typewriter');
   const roles = [
     "BTech CSE Student, KIIT",
-    "Java Developer",
+    "C++ Developer",
     "AI/ML Explorer",
     "Web Developer",
     "Building real-world tools",
@@ -120,4 +120,5 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.remove('loaded');
   });
 });
+
 
