@@ -159,17 +159,18 @@ h1 {
 }
 
 .typewriter {
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
   font-weight: 500;
   min-height: 32px;
-  margin-left: 8px;
   letter-spacing: 0.5px;
   border-right: 2px solid #fff;
-  white-space: nowrap;
-  overflow: hidden;
+  white-space: normal;
+  overflow: visible;
   display: inline-block;
-  vertical-align: bottom;
+  text-align: center;
+  line-height: 1.4;
 }
+
 
 .btn, .fancy-btn {
   display: inline-block;
@@ -423,3 +424,4 @@ footer {
   .contact-info { flex-direction: column; gap: 0.7rem; }
   .card-container { gap: 1rem; }
 }
+
